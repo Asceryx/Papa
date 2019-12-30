@@ -7,6 +7,8 @@ if __name__ == '__main__':
     b = Board(GPIO.BOARD)
     c1 = Captor({12: GPIO.OUT})
     while True:
-        c1.write(12, GPIO.HIGH)
-        time.sleep(3)
         c1.write(12, GPIO.LOW)
+        time.sleep(1)
+        c1.write(12, GPIO.HIGH)
+        time.sleep(1)
+
