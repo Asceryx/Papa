@@ -1,7 +1,6 @@
 import RPi.GPIO as GPIO
-
-
-from utils import Board, Captor
+from utils.Captor import Captor
+from utils.Board import Board
 import time
 
 if __name__ == '__main__':
