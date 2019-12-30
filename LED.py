@@ -13,8 +13,9 @@ def status_pin(captor):
 if __name__ == '__main__':
     b = Board(GPIO.BOARD)
     c1 = Captor({12: GPIO.OUT})
-    while True:
+    i = 0
+    while i < 10:
         status_pin(c1)
         c1.write(12, not c1.read(12))
         time.sleep(1)
-
+        i += 1
