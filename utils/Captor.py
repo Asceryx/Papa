@@ -26,11 +26,11 @@ class Captor:
             GPIO.output(pin, state)
 
     def get_input_status(self):
-        for pin in self.pin_in:
+        for pin in self.pin_setup:
             yield GPIO.gpio_function(pin)
 
     def get_output_status(self):
-        for pin in self.pin_out:
+        for pin in self.pin_setup:
             yield GPIO.gpio_function(pin)
 
 
