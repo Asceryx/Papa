@@ -19,3 +19,4 @@ if __name__ == '__main__':
         c1.write(12, not c1.read(12))
         time.sleep(1)
         i += 1
+    print("End at : {}".format(i))
