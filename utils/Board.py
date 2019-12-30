@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 
+
 class Board:
     """
        Initalise la carte
@@ -8,11 +9,6 @@ class Board:
               - GPIO.BCM
     """
 
-    def __init__(mode):
+    def __init__(self, mode):
         GPIO.setmode(mode)
 
-    def getMode():
-        return GPIO.getmode()
-
-    def RAZ():
-        GPIO.cleanup()
