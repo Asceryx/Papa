@@ -12,3 +12,6 @@ class Board:
     def __init__(self, mode):
         GPIO.setmode(mode)
 
+    def __del__(self):
+        GPIO.cleanup()
+
