@@ -31,6 +31,7 @@ class Captor:
 
     def get_output_status(self):
         for pin in self.pin_setup:
+            yield pin
             yield GPIO.gpio_function(pin)
 
 
