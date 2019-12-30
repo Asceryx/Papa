@@ -1,4 +1,6 @@
 import RPi.GPIO as GPIO
+
+
 from utils import Board, Captor
 import time
 
