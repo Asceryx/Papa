@@ -24,12 +24,7 @@ class Captor:
         else:
             GPIO.output(pin, state)
 
-    def get_input_status(self):
-        for pin in self.pin_setup:
-            yield pin
-            yield self.read(pin)
-
-    def get_output_status(self):
+    def get_status(self):
         for pin in self.pin_setup:
             yield pin
             yield self.read(pin)
