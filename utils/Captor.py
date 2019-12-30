@@ -13,7 +13,6 @@ class Captor:
             self.pin_setup.append(pin)
 
     def read(self, pin):
-
         if pin not in self.pin_setup:
             raise NotInitializedPin("Pin : {} is not initialized by captor".format(pin))
         else:
@@ -28,12 +27,12 @@ class Captor:
     def get_input_status(self):
         for pin in self.pin_setup:
             yield pin
-            yield GPIO.gpio_function(pin)
+            yield self.read(pin)
 
     def get_output_status(self):
         for pin in self.pin_setup:
             yield pin
-            yield GPIO.gpio_function(pin)
+            yield self.read(pin)
 
 
 
