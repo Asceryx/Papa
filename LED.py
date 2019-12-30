@@ -11,4 +11,6 @@ if __name__ == '__main__':
         time.sleep(1)
         c1.write(12, GPIO.HIGH)
         time.sleep(1)
+        for status in c1.get_input_status():
+            print(status)
 
