@@ -1,6 +1,6 @@
 from threading import Thread, RLock
 
-lock = RLock()
+#lock = RLock()
 
 
 class Worker(Thread):
@@ -11,6 +11,4 @@ class Worker(Thread):
         self.fct = fct
 
     def run(self):
-        with lock:
-            print(self.args)
-            self.fct(*self.args)
+        self.fct(*self.args)
