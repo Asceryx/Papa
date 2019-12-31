@@ -5,11 +5,12 @@ lock = RLock()
 
 class Worker(Thread):
 
-    def __init__(self, *args):
+    def __init__(self, fct, *args):
         Thread.__init__(self)
-        self.args = [arg for arg in args]
+        self.args = args
+        self.fct = [f for f in fct]
 
     def run(self):
         with lock:
-            for fct in self.args:
-                fct()
+            for f in self.fct:
+                f(self.args)
