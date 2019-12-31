@@ -12,4 +12,5 @@ class Worker(Thread):
 
     def run(self):
         with lock:
+            print(self.args)
             self.fct(self.args)
