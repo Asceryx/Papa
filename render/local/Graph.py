@@ -1,7 +1,10 @@
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 import numpy as np
+import os
 
+ROOT = os.path.abspath("../../")
+DIR_DATA = os.path.join(ROOT, "data")
 
 class Graph:
     def __init__(self, *args):
@@ -19,14 +22,4 @@ class Graph:
         plt.show()
 
     def save(self):
-        plt.savefig("test.png", quality=75, dpi=1000)
-
-
-if __name__ == "__main__":
-    g = Graph(([0, 2.24, 4.32, 5.45, 10], [1, 0, 1, 1, 1]),
-              ([0, 1.23, 1.46, 2.49, 10], [0, 1, 0, 1, 1]),
-              ([0, 1.35, 2.12, 4.49, 10], [1, 0, 1, 1, 1]),
-              ([0, 1.13, 3.46, 8.49, 10], [1, 1, 1, 0, 0]),
-              ([0, 0.53, 5.12, 7.54, 10], [1, 0, 1, 1, 0]),
-              ([0, 2.24, 3.54, 5.24, 10], [0, 1, 0, 0, 0]))
-    g.show()
+        plt.savefig(os.path.join(DIR_DATA, "graph.png"), quality=75, dpi=1000)
