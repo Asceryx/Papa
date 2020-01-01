@@ -6,6 +6,7 @@ import os
 ROOT = os.path.abspath("../../")
 DIR_DATA = os.path.join(ROOT, "data")
 
+
 class Graph:
     def __init__(self, *args):
         with plt.style.context('dark_background'):
