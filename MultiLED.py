@@ -7,17 +7,24 @@ import time
 
 def status_pin(captor):
     status_all = captor.get_status()
+    print("--- Captors pins status ----")
     for status in status_all:
-        print("{} : {}".format(status, next(status_all)))
+        print("pin {} : {} | ".format(status, next(status_all)), end='')
+    print()
 
 
 def flash(count, captor, pin):
     i = 0
+    end = 0
     while i < count:
+        begin = end
+        current_time = time.time()
         status_pin(captor)
         captor.write(pin, not captor.read(pin))
         time.sleep(1)
         i += 1
+        end = time.time() - current_time
+        print("Begin : {}, End: {} ".format(begin, end))
     print("Captor pin {} : end at {}".format(pin, i))
 
 
