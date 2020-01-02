@@ -9,7 +9,7 @@ class Captor:
     def __init__(self, pin_setup):
         self.pin_setup = []
         for pin, status in pin_setup.items():
-            GPIO.setup(pin, status, initial=GPIO.LOW, pull_up_down=GPIO.PUD_UP)
+            GPIO.setup(pin, status, initial=GPIO.LOW)
             self.pin_setup.append(pin)
 
     def read(self, pin):
