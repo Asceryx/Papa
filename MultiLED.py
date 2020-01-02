@@ -15,17 +15,19 @@ def status_pin(captor):
 
 def flash(count, captor, pin):
     i = 0
-    begin = 0
     current_time = time.time()
+    log = []
     while i < count:
         status_pin(captor)
         captor.write(pin, not captor.read(pin))
         time.sleep(1)
         i += 1
         end = time.time() - current_time
-        print("Begin : {}, End: {} ".format(begin, end))
+        print("Time : {} ".format(end))
+        log.append({"Captor": pin, "Time": end, "Level": captor.read(pin)})
     print("Captor pin {} : end at {}".format(pin, i))
     captor.write(pin, GPIO.LOW)
+    return log
 
 
 if __name__ == '__main__':
@@ -55,9 +57,11 @@ if __name__ == '__main__':
     w6.start()
 
     # Worker : Wait end work
-    w1.join()
-    w2.join()
-    w3.join()
-    w4.join()
-    w5.join()
-    w6.join()
+    value1 = w1.join()
+    value2 = w2.join()
+    value3 = w3.join()
+    value4 = w4.join()
+    value5 = w5.join()
+    value6 = w6.join()
+
+    print(value1+value2+value3+value4+value5+value6)
