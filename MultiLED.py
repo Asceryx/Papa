@@ -2,6 +2,7 @@ import RPi.GPIO as GPIO
 from utils.Captor import Captor
 from utils.Board import Board
 from system.Worker import Worker
+from system.CSV import CSV
 import time
 
 
@@ -64,4 +65,8 @@ if __name__ == '__main__':
     value5 = w5.join()
     value6 = w6.join()
 
-    print(value1+value2+value3+value4+value5+value6)
+    value = value1+value2+value3+value4+value5+value6
+    c = CSV("log.csv")
+    c.f_write(value[0])
+    for d in value[1:]:
+        c.f_append(d)
