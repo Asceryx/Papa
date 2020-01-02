@@ -29,6 +29,11 @@ class Captor:
             yield pin
             yield self.read(pin)
 
+    def __del__(self):
+        for pin in self.pin_setup:
+            self.write(pin, GPIO.LOW)
+
+
 
 
 
