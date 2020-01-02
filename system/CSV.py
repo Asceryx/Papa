@@ -5,7 +5,7 @@ import csv
 class CSV(File):
     def __init__(self, name):
         File.__init__(self, name)
-        self.fieldnames = ["Captor", "TimeBegin", "TimeEnd", "Level"]
+        self.fieldnames = ["Captor", "Time", "Level"]
 
     def f_read(self):
         with open(super().getfilename(), 'r', newline='') as file:
