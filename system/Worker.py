@@ -7,7 +7,7 @@ from threading import Thread, RLock
 class Worker(Thread):
 
     def __init__(self, *args, **kwargs):
-        super().__init__(self, *args, **kwargs)
+        super(Worker, self).__init__()
         self._return = None
 
     def run(self):
