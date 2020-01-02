@@ -26,6 +26,7 @@ def flash(count, captor, pin):
         end = time.time() - current_time
         print("Begin : {}, End: {} ".format(begin, end))
     print("Captor pin {} : end at {}".format(pin, i))
+    captor.write(pin, GPIO.LOW)
 
 
 if __name__ == '__main__':
