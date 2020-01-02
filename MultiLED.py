@@ -15,10 +15,9 @@ def status_pin(captor):
 
 def flash(count, captor, pin):
     i = 0
-    end = 0
+    begin = 0
+    current_time = time.time()
     while i < count:
-        begin = end
-        current_time = time.time()
         status_pin(captor)
         captor.write(pin, not captor.read(pin))
         time.sleep(1)
