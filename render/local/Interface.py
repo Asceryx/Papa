@@ -3,6 +3,7 @@ import wx
 APP_EXIT = 1
 
 
+
 class Interface(wx.Frame):
 
     def __init__(self, parent, title):
@@ -11,6 +12,22 @@ class Interface(wx.Frame):
         self.Center()
 
     def InitUI(self):
+        None
+
+
+    def onOK(self, event):
+        # Do something
+        print
+        'onOK handler'
+
+    def onCancel(self, event):
+        self.closeProgram()
+
+    def closeProgram(self):
+        self.Close()
+
+
+    def MenuBar(self):
         menubar = wx.MenuBar()
 
         fileMenu = wx.Menu()

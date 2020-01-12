@@ -1,10 +1,10 @@
 import RPi.GPIO as GPIO
-from . import Captor
+from . import DigitalCaptor
 
 
-class ModularCaptor(Captor):
+class ModularCaptor(DigitalCaptor):
     def __init__(self, pin_in, pin_out, pmw_channel, frequency, duty_cycle):
-        Captor.__init__(self, pin_in, pin_out)
+        DigitalCaptor.__init__(self, pin_in, pin_out)
         self.pmw = GPIO.PWM(pmw_channel, frequency)
         self.pmw.start(duty_cycle)
 

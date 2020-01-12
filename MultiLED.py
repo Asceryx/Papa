@@ -1,7 +1,7 @@
 import RPi.GPIO as GPIO
-from utils.Captor import Captor
+from utils.DigitalCaptor import DigitalCaptor
 from utils.Board import Board
-from system.Worker import Worker
+from system.worker import Worker
 from system.CSV import CSV
 import time
 
@@ -34,12 +34,12 @@ def flash(count, captor, pin):
 if __name__ == '__main__':
     b = Board(GPIO.BOARD)
     # Captor
-    c1 = Captor({12: GPIO.OUT})
-    c2 = Captor({16: GPIO.OUT})
-    c3 = Captor({18: GPIO.OUT})
-    c4 = Captor({22: GPIO.OUT})
-    c5 = Captor({32: GPIO.OUT})
-    c6 = Captor({36: GPIO.OUT})
+    c1 = DigitalCaptor({12: GPIO.OUT})
+    c2 = DigitalCaptor({16: GPIO.OUT})
+    c3 = DigitalCaptor({18: GPIO.OUT})
+    c4 = DigitalCaptor({22: GPIO.OUT})
+    c5 = DigitalCaptor({32: GPIO.OUT})
+    c6 = DigitalCaptor({36: GPIO.OUT})
 
     # Worker : do flashing
     w1 = Worker(target=flash, args=(10, c1, 12))

@@ -5,8 +5,8 @@ class NotInitializedPin(Exception):
     pass
 
 
-class Captor:
-    def __init__(self, pin_setup):
+class DigitalCaptor:
+    def __init__(self, pin_setup={}):
         self.pin_setup = []
         for pin, status in pin_setup.items():
             GPIO.setup(pin, status, initial=GPIO.LOW)

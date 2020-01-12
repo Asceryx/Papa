@@ -1,7 +1,5 @@
 import os
-
-ROOT = os.path.abspath("../")
-DIR_DATA = os.path.join(ROOT, "data")
+from system.init import ROOT, DIR_DATA
 DEBUG = True
 
 

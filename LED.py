@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
-from utils.Captor import Captor
+from utils.DigitalCaptor import DigitalCaptor
 from utils.Board import Board
+
 import time
 
 
@@ -12,7 +13,7 @@ def status_pin(captor):
 
 if __name__ == '__main__':
     b = Board(GPIO.BOARD)
-    c1 = Captor({12: GPIO.OUT})
+    c1 = DigitalCaptor({12: GPIO.OUT})
     i = 0
     while i < 10:
         status_pin(c1)
