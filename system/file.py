@@ -1,6 +1,5 @@
 import os
-from system.init import ROOT, DIR_DATA
-DEBUG = True
+from config.configuration import DIR_DATA, DEBUG
 
 
 class File:
@@ -22,9 +21,6 @@ class File:
     def f_lines(self):
         with open(self.filename, "r") as file:
             return file.readlines()
-
-    def getfilename(self):
-        return self.filename
 
     def __del__(self):
         if not DEBUG:

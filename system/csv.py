@@ -8,7 +8,7 @@ class CSV(File):
         self.fieldnames = ["Captor", "Time", "Level"]
 
     def f_read(self):
-        with open(super().getfilename(), 'r', newline='') as file:
+        with open(self.filename, 'r', newline='') as file:
             dialect = csv.excel()
             reader = csv.DictReader(file,  fieldnames=self.fieldnames, dialect=dialect, delimiter=';')
             for row in reader:
@@ -20,7 +20,7 @@ class CSV(File):
         :param data: dict
         :return: None
         """
-        with open(super().getfilename(), 'w', newline='') as file:
+        with open(self.filename, 'w', newline='') as file:
             dialect = csv.excel()
             writer = csv.DictWriter(file, fieldnames=self.fieldnames, dialect=dialect, delimiter=';')
             writer.writeheader()
@@ -32,7 +32,7 @@ class CSV(File):
         :param data: dict
         :return: None
         """
-        with open(super().getfilename(), 'a', newline='') as file:
+        with open(self.filename, 'a', newline='') as file:
             dialect = csv.excel()
             writer = csv.DictWriter(file, fieldnames=self.fieldnames, dialect=dialect, delimiter=';')
             writer.writerow(data)

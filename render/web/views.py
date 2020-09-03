@@ -1,13 +1,23 @@
-from flask import Flask, render_template
+from flask import Flask, request
+from flask_restful import Resource, Api
+
+
 
 app = Flask(__name__)
+api = Api(app)
+
+todos = {"todo1": "Toto"}
+
+class TodoSimple(Resource):
+    def get(self, todo_id):
+        return {todo_id: todos[todo_id]}
+
+    def put(self, todo_id):
+        todos[todo_id] = request.form['data']
+        return {todo_id: todos[todo_id]}
 
 
-@app.route('/')
-def index():
-    return render_template('index.html',
-                           captors=["12 : 0", "13 : 1", "14 : 0"])
-
+api.add_resource(TodoSimple, '/<string:todo_id>')
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

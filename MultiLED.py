@@ -1,14 +1,14 @@
 import RPi.GPIO as GPIO
-from utils.DigitalCaptor import DigitalCaptor
-from utils.Board import Board
+from dependencies.DigitalCaptor import DigitalCaptor
+from dependencies.Board import Board
 from system.worker import Worker
-from system.CSV import CSV
+from system.csv import CSV
 import time
 
 
 def status_pin(captor):
     status_all = captor.get_status()
-    print("--- Captors pins status ----")
+    print("--- captors pins status ----")
     for status in status_all:
         print("pin {} : {} | ".format(status, next(status_all)), end='')
     print()
