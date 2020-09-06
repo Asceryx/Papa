@@ -12,3 +12,5 @@ if __name__ == '__main__':
     led.turn_off()
     print(led.shutdown)
     print(led.bright)
+    blink_service = BlinkService(led)
+    blink_service.run(fade=True)
