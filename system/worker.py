@@ -5,11 +5,11 @@ from threading import Thread, RLock
 
 
 class Worker(Thread):
+    __thr_exit = False
 
     def __init__(self, *args, **kwargs):
         Thread.__init__(self, *args, **kwargs)
         self._return = None
-        self.__thr_exit = False
 
     def run(self):
         target = getattr(self, '_target')
