@@ -24,7 +24,7 @@ class LedImpl(Led):
             logging.info("Extinction d'une led sur le port {} ".format(self.pin.channel))
 
     def fade_in(self, time_in):
-        delay = time / 100
+        delay = time_in / 100
         for x in range(100):
             self._pmw.ChangeDutyCycle(x)
             time.sleep(delay)
