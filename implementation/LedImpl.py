@@ -1,3 +1,5 @@
+import time
+
 from grove.gpio import GPIO
 import RPi.GPIO as RPIGPIO
 
@@ -21,14 +23,14 @@ class LedImpl(Led):
         else:
             logging.info("Extinction d'une led sur le port {} ".format(self.pin.channel))
 
-    def fade_in(self, time):
+    def fade_in(self, time_in):
         delay = time / 100
         for x in range(100):
             self._pmw.ChangeDutyCycle(x)
-            time.sleep(float(delay))
+            time.sleep(delay)
 
-    def fade_out(self, time):
-        delay = time / 100
+    def fade_out(self, time_out):
+        delay = time_out / 100
         for x in range(100, 0, -1):
             self._pmw.ChangeDutyCycle(x)
-            time.sleep(float(delay))
+            time.sleep(delay)
