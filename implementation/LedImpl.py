@@ -6,7 +6,6 @@ import RPi.GPIO as RPIGPIO
 from models.Components import Output
 from models.Led import Led
 
-import logging
 
 
 class LedImpl(Led):
@@ -14,15 +13,15 @@ class LedImpl(Led):
         super().__init__(name, pin, reference, description)
         self._gpio = GPIO(self.pin.channel, self.pin.type_pin)
         self._pmw = RPIGPIO.PWM(self.pin.channel, 100)
-        self._pmw.start(Led.MAX_BRIGHT)
+        self._pmw.start(Led.bright)
 
     def light(self, status):
         self.shutdown = status
-        self._gpio.write(int(status))
+        self._gpio.write(status)
         if status:
-            logging.info("Allumage d'une led sur le port {} ".format(self.pin.channel))
+            print("Allumage d'une led sur le port {} ".format(self.pin.channel))
         else:
-            logging.info("Extinction d'une led sur le port {} ".format(self.pin.channel))
+            print("Extinction d'une led sur le port {} ".format(self.pin.channel))
 
     def fade_in(self, time_in):
         delay = time_in / 100
