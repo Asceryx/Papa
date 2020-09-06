@@ -1,6 +1,6 @@
 try:
     import RPi.GPIO as GPIO
-except RuntimeError:
+except ModuleNotFoundError:
     print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.  You can achieve this "
           "by using 'sudo' to run your script")
 
@@ -21,8 +21,8 @@ class Input(Pin):
     type = GPIO.IN
 
     def __init__(self, channel, initial=GPIO.HIGH, default=0):
+        super(Input, self).__init__(channel, initial)
         self.value = default
-        super().__init__(channel, initial)
 
     @property
     def value(self):
@@ -37,8 +37,8 @@ class Output(Pin):
     type = GPIO.OUT
 
     def __init__(self, channel, initial=GPIO.HIGH, default=0):
+        super(Output, self).__init__(channel, initial)
         self.state = default
-        super().__init__(channel, initial)
 
     @property
     def state(self):
@@ -82,3 +82,8 @@ class Board(Rpi):
 
     def __del__(self):
         GPIO.cleanup()
+
+
+if __name__ == "__main__":
+    pin = Output(12)
+    print(pin.channel)
