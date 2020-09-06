@@ -11,6 +11,7 @@ class Worker(Thread):
         self._return = None
 
     def run(self):
+        print("[Blinking] : start working threading")
         target = getattr(self, '_target')
         if target is not None:
             self._return = target(*getattr(self, '_args'), **getattr(self, '_kwargs'))
