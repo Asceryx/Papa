@@ -28,9 +28,9 @@ class BlinkService:
                 self.__led.fade_out(self.__blink_on)
                 print("[Blinking] : Fade out")
             else:
-                self.__led = True
+                self.__led.light(True)
                 time.sleep(self.__blink_on)
-                self.__led = False
+                self.__led.light(False)
                 time.sleep(self.__blink_off)
 
     def run(self, on_time=0.5, off_time=0.5, fade=False):
