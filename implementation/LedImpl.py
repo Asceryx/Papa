@@ -10,23 +10,8 @@ class LedImpl(Led):
         self._gpio = GPIO(self.pin.channel, self.pin.type)
         self._pmw = GPIO.PWM(self.pin.channel, 100)
 
-    @property
-    def shutdown(self):
-        return super().shutdown
-
-    @shutdown.setter
-    def shutdown(self, shutdown):
-        self._gpio.write(int(shutdown))
-        super(LedImpl, type(self)).shutdown.fset(self, bool(shutdown))
-
-    @property
-    def bright(self):
-        return super().bright
-
-    @bright.setter
-    def bright(self, bright):
-        super(LedImpl, type(self)).bright.fset(self, bright)
-        self._pwm.start(bright)
+    def turn_on(self):
+        self._gpio.write(1)
 
     def fade_in(self, time):
         delay = time / 100

@@ -6,4 +6,4 @@ from services.blinkService import BlinkService
 if __name__ == '__main__':
     pin17 = Output(channel=17)
     led = LedImpl("led", pin17, "led5v", "Led de test")
-    led.shutdown = False
+    led.turn_on()
