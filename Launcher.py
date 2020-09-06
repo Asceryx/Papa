@@ -12,4 +12,4 @@ if __name__ == '__main__':
     time.sleep(10)
     led.light(False)
     blink_service = BlinkService(led)
-    blink_service.run(1, 1, True)
+    blink_service.run(1, 1, False)
