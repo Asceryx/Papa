@@ -25,10 +25,10 @@ class LedImpl(Led):
         delay = time / 100
         for x in range(100):
             self._pmw.ChangeDutyCycle(x)
-            time.sleep(delay)
+            time.sleep(float(delay))
 
     def fade_out(self, time):
         delay = time / 100
         for x in range(100, 0, -1):
             self._pmw.ChangeDutyCycle(x)
-            time.sleep(delay)
+            time.sleep(float(delay))
