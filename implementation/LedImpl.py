@@ -12,7 +12,12 @@ class LedImpl(Led):
         self._pmw = RPIGPIO.PWM(self.pin.channel, 100)
 
     def turn_on(self):
+        self.shutdown = False
         self._gpio.write(1)
+
+    def turn_off(self):
+        self.shutdown = True
+        self._gpio.write(0)
 
     def fade_in(self, time):
         delay = time / 100
