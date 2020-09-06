@@ -31,7 +31,7 @@ class BlinkService:
 
     def run(self, on_time=0.5, off_time=0.5, fade=False):
         self.__worker = Worker(target=self.__blink, args=(on_time, off_time, fade))
-        self.__worker.setDaemon(True)
+        #self.__worker.setDaemon(True)
         self.__worker.start()
         self.isRun = True
 
