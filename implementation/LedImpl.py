@@ -14,6 +14,7 @@ class LedImpl(Led):
         super().__init__(name, pin, reference, description)
         self._gpio = GPIO(self.pin.channel, self.pin.type_pin)
         self._pmw = RPIGPIO.PWM(self.pin.channel, 100)
+        self._pmw.start(0)
 
     def light(self, status):
         self.shutdown = status
@@ -34,3 +35,7 @@ class LedImpl(Led):
         for x in range(100, 0, -1):
             self._pmw.ChangeDutyCycle(x)
             time.sleep(delay)
+
+    def __del__(self):
+        self._pmw.stop()
+        RPIGPIO.cleanup()
