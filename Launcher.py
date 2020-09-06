@@ -8,5 +8,7 @@ if __name__ == '__main__':
     led = LedImpl("led", pin17, "led5v", "Led de test")
     led.turn_on()
     print(led.shutdown)
+    print(led.bright)
     led.turn_off()
     print(led.shutdown)
+    print(led.bright)
