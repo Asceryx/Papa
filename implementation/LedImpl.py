@@ -17,7 +17,7 @@ class LedImpl(Led):
     @shutdown.setter
     def shutdown(self, shutdown):
         super(LedImpl, type(self)).shutdown.fset(self, bool(shutdown))
-        v = self.measure == bool(not shutdown) and bool(self.__bright)
+        v = self.measure == bool(not shutdown) and bool(self.bright)
         self.__gpio.write(int(v))
 
     @property
