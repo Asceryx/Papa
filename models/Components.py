@@ -4,8 +4,9 @@ except RuntimeError:
     print("Error importing RPi.GPIO!  This is probably because you need superuser privileges.  You can achieve this "
           "by using 'sudo' to run your script")
 
-MODE = "BCM"
-GPIO.setmode(MODE)
+MODE = GPIO.BCM
+if GPIO.getmode() != MODE:
+    GPIO.setmode(MODE)
 
 
 class Pin:
