@@ -7,19 +7,23 @@ from models.Led import Led
 class LedImpl(Led):
     def __init__(self, name, pin: Output, reference, description):
         super().__init__(name, pin, reference, description)
-        self.gpio = GPIO(self.pin.channel, self.pin.type)
+        self._gpio = GPIO(self.pin.channel, self.pin.type)
         self._pmw = GPIO.PWM(self.pin.channel, 100)
 
-    def turn(self, on):
-        self.gpio.write(int(on))
+    @property
+    def shutdown(self):
+        return super().shutdown
 
-
+    @shutdown.setter
+    def shutdown(self, shutdown):
+        self._gpio.write(int(shutdown))
+        super(LedImpl, type(self)).shutdown.fset(self, bool(shutdown))
 
     @property
     def bright(self):
         return super().bright
 
-    @shutdown.setter
+    @bright.setter
     def bright(self, bright):
         super(LedImpl, type(self)).bright.fset(self, bright)
         self._pwm.start(bright)
