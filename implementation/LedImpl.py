@@ -7,7 +7,7 @@ from models.Led import Led
 class LedImpl(Led):
     def __init__(self, name, pin: Output, reference, description):
         super().__init__(name, pin, reference, description)
-        self._gpio = GPIO(self.pin.channel, self.pin.type)
+        self._gpio = GPIO(self.pin.channel, self.pin.type_pin)
         self._pmw = GPIO.PWM(self.pin.channel, 100)
 
     def turn_on(self):
