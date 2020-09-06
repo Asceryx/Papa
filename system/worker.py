@@ -5,7 +5,6 @@ from threading import Thread, RLock
 
 
 class Worker(Thread):
-    __thr_exit = False
 
     def __init__(self, *args, **kwargs):
         Thread.__init__(self, *args, **kwargs)

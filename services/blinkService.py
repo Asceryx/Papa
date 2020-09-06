@@ -9,6 +9,7 @@ class BlinkService:
     __worker = None
 
     def __init__(self, led: LedImpl):
+
         self.isRun = False
         self._bright = led.bright
         self._light = led.measure
@@ -19,7 +20,7 @@ class BlinkService:
     def __blink(self, on, off, fade):
         self.__blink_on = on
         self.__blink_off = off
-        while not self.__thr_exit:
+        while self.isRun:
             if fade:
                 self.__led.fade_in(self.__blink_on)
                 self.__led.fade_out(self.__blink_on)
@@ -31,7 +32,7 @@ class BlinkService:
 
     def run(self, on_time=0.5, off_time=0.5, fade=False):
         self.__worker = Worker(target=self.__blink, args=(on_time, off_time, fade))
-        #self.__worker.setDaemon(True)
+        # self.__worker.setDaemon(True)
         self.__worker.start()
         self.isRun = True
 
