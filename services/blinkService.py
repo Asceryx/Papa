@@ -6,14 +6,14 @@ from system.worker import Worker
 
 
 class BlinkService:
+    __worker = None
+
     def __init__(self, led: LedImpl):
         self.isRun = False
         self._bright = led.bright
         self._light = led.measure
         self.__blink_on = 0.0
         self.__blink_off = 0.0
-        self.__gpio = GPIO(led.pin.channel, led.pin.type)
-        self.__worker = None
         self.__led = led
 
     def __blink(self, on, off, fade):
