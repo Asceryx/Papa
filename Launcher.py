@@ -5,4 +5,4 @@ from services.blinkService import BlinkService
 if __name__ == '__main__':
     pin12 = Output(channel=12)
     led = Led("led", pin12, "led5v", "Led de test")
-    BlinkService(led)
+    led.shutdown = False
