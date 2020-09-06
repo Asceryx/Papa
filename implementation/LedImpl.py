@@ -14,7 +14,7 @@ class LedImpl(Led):
         super().__init__(name, pin, reference, description)
         self._gpio = GPIO(self.pin.channel, self.pin.type_pin)
         self._pmw = RPIGPIO.PWM(self.pin.channel, 100)
-        self._pmw.start(0)
+        self._pmw.start(Led.MAX_BRIGHT)
 
     def light(self, status):
         self.shutdown = status
