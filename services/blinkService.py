@@ -24,9 +24,9 @@ class BlinkService:
         while self.isRun:
             if fade:
                 self.__led.fade_in(self.__blink_on)
-                logging.debug("[Blinking] : Fade in")
+                print("[Blinking] : Fade in")
                 self.__led.fade_out(self.__blink_on)
-                logging.debug("[Blinking] : Fade out")
+                print("[Blinking] : Fade out")
             else:
                 self.__led = True
                 time.sleep(self.__blink_on)
@@ -34,7 +34,7 @@ class BlinkService:
                 time.sleep(self.__blink_off)
 
     def run(self, on_time=0.5, off_time=0.5, fade=False):
-        logging.debug("[Blinking] : start working threading")
+        print("[Blinking] : start working threading")
         self.__worker = Worker(target=self.__blink, args=(on_time, off_time, fade))
         # self.__worker.setDaemon(True)
         self.__worker.start()
