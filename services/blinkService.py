@@ -1,3 +1,4 @@
+import logging
 import time
 from grove.gpio import GPIO
 
@@ -23,7 +24,9 @@ class BlinkService:
         while self.isRun:
             if fade:
                 self.__led.fade_in(self.__blink_on)
+                logging.info("[Blinking] : Fade in")
                 self.__led.fade_out(self.__blink_on)
+                logging.info("[Blinking] : Fade out")
             else:
                 self.__led = True
                 time.sleep(self.__blink_on)
