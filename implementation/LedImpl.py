@@ -9,16 +9,10 @@ class LedImpl(Led):
         super().__init__(name, pin, reference, description)
         self._gpio = GPIO(self.pin.channel, self.pin.type)
         self._pmw = GPIO.PWM(self.pin.channel, 100)
-        print(self._gpio)
 
-    @property
-    def shutdown(self):
-        return super().shutdown
+    def turn(self, on):
+        self._gpio.write(int(on))
 
-    @shutdown.setter
-    def shutdown(self, shutdown):
-        self._gpio.write(int(shutdown))
-        super(LedImpl, type(self)).shutdown.fset(self, bool(shutdown))
 
 
     @property
