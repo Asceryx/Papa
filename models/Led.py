@@ -7,7 +7,7 @@ class Led(Captor):
 
     def __init__(self, name, pin: Output, reference, description):
         super(Led, self).__init__(name, pin, reference, description)
-        self.__light = False
+        self.light = False
         self.__bright = 0
         self.type = Type.TOR
 
