@@ -13,6 +13,7 @@ class Pin:
     type = None
 
     def __init__(self, channel, initial):
+        GPIO.setup(channel, type)
         self.channel = channel
         self.initial = initial
 
