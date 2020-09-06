@@ -10,16 +10,16 @@ if GPIO.getmode() != MODE:
 
 
 class Pin:
-    type = None
+    type_pin = None
 
     def __init__(self, channel, initial):
-        GPIO.setup(channel, type)
+        GPIO.setup(channel, self.type_pin)
         self.channel = channel
         self.initial = initial
 
 
 class Input(Pin):
-    type = GPIO.IN
+    type_pin = GPIO.IN
 
     def __init__(self, channel, initial=GPIO.HIGH, default=0):
         super(Input, self).__init__(channel, initial)
@@ -35,7 +35,7 @@ class Input(Pin):
 
 
 class Output(Pin):
-    type = GPIO.OUT
+    type_pin = GPIO.OUT
 
     def __init__(self, channel, initial=GPIO.HIGH, default=0):
         super(Output, self).__init__(channel, initial)
