@@ -16,7 +16,7 @@ class LedImpl(Led):
         self._pmw.start(self.bright)
 
     def light(self, status):
-        self.shutdown = status
+        self.shutdown = not status
         self._gpio.write(status)
         if status:
             print("Allumage d'une led sur le port {} ".format(self.pin.channel))
