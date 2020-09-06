@@ -1,11 +1,12 @@
 import time
 from grove.gpio import GPIO
-from models.Led import Led
+
+from implementation.LedImpl import LedImpl
 from system.worker import Worker
 
 
 class BlinkService:
-    def __init__(self, led: Led):
+    def __init__(self, led: LedImpl):
         self.isRun = False
         self._bright = led.bright
         self._light = led.measure
@@ -13,22 +14,23 @@ class BlinkService:
         self.__blink_off = 0.0
         self.__gpio = GPIO(led.pin.channel, led.pin.type)
         self.__worker = None
+        self.__led = led
 
-    def __lighton(self, b=True):
-        v = self._light == bool(b) and bool(self._bright)
-        self.__gpio.write(int(v))
-
-    def __blink(self, on=0.5, off=0.5):
+    def __blink(self, on, off, fade):
         self.__blink_on = on
         self.__blink_off = off
         while not self.__thr_exit:
-            self.__lighton(True)
-            time.sleep(self.__blink_on)
-            self.__lighton(False)
-            time.sleep(self.__blink_off)
+            if fade:
+                self.__led.fade_in(self.__blink_on)
+                self.__led.fade_out(self.__blink_on)
+            else:
+                self.__led = True
+                time.sleep(self.__blink_on)
+                self.__led = False
+                time.sleep(self.__blink_off)
 
-    def run(self, on_time=0.5, off_time=0.5):
-        self.__worker = Worker(target=self.__blink, args=(on_time, off_time))
+    def run(self, on_time=0.5, off_time=0.5, fade=False):
+        self.__worker = Worker(target=self.__blink, args=(on_time, off_time, fade))
         self.__worker.setDaemon(True)
         self.__worker.start()
         self.isRun = True
